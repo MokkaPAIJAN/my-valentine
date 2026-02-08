@@ -22,7 +22,7 @@
     /* SMALL CENTER BOX */
     .box{
       width: min(360px, 82vw);
-      max-height: 65vh;
+      max-height: 72vh;
       background: rgba(255,255,255,0.92);
       border:1px solid rgba(255,182,193,0.55);
       border-radius:18px;
@@ -39,64 +39,152 @@
     }
 
     h1{
-      margin:6px 0;
+      margin:6px 0 8px;
       font-size:26px;
       color:#d40055;
+      letter-spacing:0.5px;
     }
 
     .line1{
+      margin:6px 0 0;
       font-size:17px;
-      font-weight:700;
-      margin-top:4px;
+      font-weight:800;
+      color:#7a003b;
+      line-height:1.25;
     }
 
     .line2{
+      margin:8px 0 0;
       font-size:14px;
-      margin-top:8px;
+      color:#7a003b;
+      line-height:1.25;
+      opacity:0.95;
+    }
+
+    .timeline{
+      margin-top:10px;
+      font-size:12px;
+      color:#7a003b;
+      opacity:0.9;
+      line-height:1.35;
+      background: rgba(255, 229, 236, 0.6);
+      border: 1px solid rgba(255,182,193,0.45);
+      border-radius: 12px;
+      padding: 8px 10px;
     }
 
     /* COUNTDOWN */
     .countdown-title{
       margin-top:10px;
-      font-size:13px;
-      opacity:0.8;
+      font-size:12px;
+      opacity:0.75;
+      color:#7a003b;
     }
-
     .countdown{
       margin-top:4px;
       font-size:14px;
-      font-weight:700;
+      font-weight:900;
       color:#d40055;
       letter-spacing:0.5px;
+    }
+
+    /* Buttons */
+    .btnRow{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    button{
+      border:none;
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:14px;
+      font-size:14px;
+      font-weight:900;
+      transition: transform .12s ease;
+      user-select:none;
+    }
+    button:active{ transform: scale(0.97); }
+
+    .primary{
+      background:#ff2f78;
+      color:#fff;
+      box-shadow:0 10px 22px rgba(255,47,120,0.30);
+    }
+    .secondary{
+      background:#fff;
+      color:#7a003b;
+      border:1px solid rgba(255,182,193,0.7);
+    }
+
+    /* Reveal letter */
+    .letter{
+      margin-top:10px;
+      text-align:left;
+      font-size:13px;
+      color:#6b0035;
+      line-height:1.45;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,182,193,0.55);
+      border-radius: 14px;
+      padding: 10px 12px;
+      display:none;
+    }
+    .letter strong{ color:#d40055; }
+
+    /* Mini response */
+    .response{
+      margin-top:10px;
+      font-size:13px;
+      font-weight:800;
+      color:#d40055;
+      display:none;
     }
 
     .sign{
       margin-top:10px;
       font-size:12px;
       opacity:0.9;
+      color:#7a003b;
     }
 
-    /* Falling roses */
+    /* Falling */
     .fall{
       position:absolute;
       top:-160px;
       pointer-events:none;
       animation: fallDown linear 1;
+      will-change: transform;
+      user-select:none;
+      z-index:1;
     }
-
     .petal{ opacity:0.85; }
     .flower{ filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
 
     @keyframes fallDown{
       0%   { transform: translateY(0) rotate(0deg); opacity:0; }
       10%  { opacity:1; }
-      100% { transform: translateY(120vh) rotate(360deg); }
+      100% { transform: translateY(120vh) rotate(360deg); opacity:1; }
     }
 
-    @media (max-width: 390px){
-      .box{ transform: scale(0.92); }
+    /* Confetti hearts */
+    .confetti{
+      position:absolute;
+      top:-20px;
+      font-size:18px;
+      animation: confettiFall linear 1;
+      pointer-events:none;
+      z-index:3;
+    }
+    @keyframes confettiFall{
+      0%{ transform: translateY(0) rotate(0deg); opacity:0; }
+      10%{ opacity:1; }
+      100%{ transform: translateY(110vh) rotate(360deg); opacity:0.95; }
     }
 
+    /* Hint */
     .hint{
       position:fixed;
       bottom:10px;
@@ -104,6 +192,11 @@
       transform:translateX(-50%);
       font-size:12px;
       opacity:.7;
+      z-index:5;
+    }
+
+    @media (max-width: 390px){
+      .box{ transform: scale(0.92); }
     }
   </style>
 </head>
@@ -118,102 +211,169 @@
   <div class="box">
     <img src="rose3.png" class="center-rose" alt="Rose">
 
-    <h1>YAYYY!!</h1>
+    <h1>Happy Propose Day 💍</h1>
 
     <div class="line1">
-      <span style="color:#d40055;">Paddu</span>, you just made my day 😭❤️
+      <span style="color:#d40055;">Paddu</span>, you are my best “yes” ❤️
     </div>
 
     <div class="line2">
-      Valentine’s Day is coming 💐
+      Today is not a new proposal… it’s me choosing you again ✨
     </div>
 
-    <!-- COUNTDOWN -->
+    <div class="timeline">
+      <div>💌 I proposed: <strong>03.08.2024</strong></div>
+      <div>✅ You accepted: <strong>18.08.2024</strong></div>
+    </div>
+
+    <!-- Countdown to Feb 14 -->
     <div class="countdown-title">Valentine’s Day in</div>
     <div class="countdown" id="countdown">Loading…</div>
 
+    <!-- Option 1: Reveal message -->
+    <div class="btnRow">
+      <button class="primary" id="revealBtn">I have something to say 💖</button>
+    </div>
+
+    <div class="letter" id="letter">
+      <div><strong>Paddu</strong>,</div>
+      <div style="margin-top:6px;">
+        I still remember the day I asked you… and the day you said yes.
+        Every time I think about it, my heart feels calm and full.
+      </div>
+      <div style="margin-top:6px;">
+        On this Propose Day, I just want to say:
+        <strong>I choose you again</strong> — today, tomorrow, and always.
+      </div>
+      <div style="margin-top:6px;">
+        Thank you for being my happiness, my peace, and my person. ❤️
+      </div>
+
+      <!-- Option 4: Interactive buttons inside letter -->
+      <div class="btnRow" style="margin-top:10px;">
+        <button class="primary" id="yesBtn">Yes 💖</button>
+        <button class="secondary" id="alwaysBtn">Always 💍</button>
+      </div>
+
+      <div class="response" id="response"></div>
+    </div>
+
     <div class="sign">
-      — with love, <span style="color:#d40055;font-weight:700;">Sangar</span>
+      — with love, <span style="color:#d40055; font-weight:900;">Sangar</span>
     </div>
   </div>
 
   <div class="hint" id="hint">Tap once for music 🎵</div>
 
   <script>
-    /* 🎯 COUNTDOWN TO FEB 14 */
+    /* ✅ Countdown to Feb 14 (next upcoming) */
     const countdownEl = document.getElementById("countdown");
-
     function updateCountdown(){
       const now = new Date();
       const year = now.getFullYear();
-      const valentines = new Date(year, 1, 14, 0, 0, 0); // Feb = 1
-
-      if(now > valentines){
-        valentines.setFullYear(year + 1);
-      }
+      let valentines = new Date(year, 1, 14, 0, 0, 0); // Feb = 1
+      if(now > valentines) valentines = new Date(year + 1, 1, 14, 0, 0, 0);
 
       const diff = valentines - now;
-
       const d = Math.floor(diff / (1000*60*60*24));
       const h = Math.floor((diff / (1000*60*60)) % 24);
       const m = Math.floor((diff / (1000*60)) % 60);
       const s = Math.floor((diff / 1000) % 60);
 
-      countdownEl.innerHTML =
-        `${d}d ${h}h ${m}m ${s}s`;
+      countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
     }
-
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* 🌹 Falling roses */
+    /* 🌹 Falling petals + roses */
     function spawnPetal(){
       const p = document.createElement("img");
       p.src = "rose1.png";
       p.className = "fall petal";
-      p.style.left = Math.random()*100+"vw";
-      p.style.width = (10+Math.random()*6)+"px";
-      p.style.animationDuration = (4+Math.random()*3)+"s";
+      p.style.left = Math.random()*100 + "vw";
+      p.style.width = (10 + Math.random()*7) + "px";
+      p.style.animationDuration = (4 + Math.random()*3) + "s";
       document.body.appendChild(p);
-      setTimeout(()=>p.remove(),8000);
+      setTimeout(()=>p.remove(), 8000);
     }
 
     function spawnFlower(){
       const f = document.createElement("img");
       f.src = "rose2.png";
       f.className = "fall flower";
-      f.style.left = Math.random()*100+"vw";
-      f.style.width = (90+Math.random()*30)+"px";
-      f.style.animationDuration = (6+Math.random()*4)+"s";
+      f.style.left = Math.random()*100 + "vw";
+      f.style.width = (95 + Math.random()*30) + "px";
+      f.style.animationDuration = (6 + Math.random()*4) + "s";
+      f.style.transform = `rotate(${Math.random()*40 - 20}deg)`;
       document.body.appendChild(f);
-      setTimeout(()=>f.remove(),13000);
+      setTimeout(()=>f.remove(), 13000);
     }
 
-    setInterval(spawnPetal, 350);
-    setInterval(()=>{spawnFlower();spawnFlower();},800);
+    setInterval(spawnPetal, 360);
+    setInterval(()=>{ spawnFlower(); spawnFlower(); }, 820);
 
-    /* 🎵 Music enable */
+    /* 🎵 Music (best allowed) */
     const music = document.getElementById("bgMusic");
     const hint  = document.getElementById("hint");
-
     music.muted = true;
+    music.volume = 0;
     music.play().catch(()=>{});
 
     function enableSound(){
       music.muted = false;
-      let v=0;
-      const fade=setInterval(()=>{
-        v+=0.05;
-        music.volume=Math.min(v,0.6);
-        if(v>=0.6) clearInterval(fade);
-      },120);
-      hint.style.display="none";
-      document.removeEventListener("click",enableSound);
-      document.removeEventListener("touchstart",enableSound);
+      let v = 0;
+      const fade = setInterval(()=>{
+        v += 0.05;
+        music.volume = Math.min(v, 0.6);
+        if(v >= 0.6) clearInterval(fade);
+      }, 120);
+      if(hint) hint.style.display = "none";
+      document.removeEventListener("click", enableSound);
+      document.removeEventListener("touchstart", enableSound);
+    }
+    document.addEventListener("click", enableSound);
+    document.addEventListener("touchstart", enableSound);
+
+    /* 💖 Option 1: Reveal letter */
+    const revealBtn = document.getElementById("revealBtn");
+    const letter = document.getElementById("letter");
+    revealBtn.addEventListener("click", () => {
+      letter.style.display = (letter.style.display === "block") ? "none" : "block";
+      revealBtn.textContent = (letter.style.display === "block")
+        ? "Hide message 🙈"
+        : "I have something to say 💖";
+    });
+
+    /* 💍 Option 4: Yes / Always buttons with celebration */
+    const yesBtn = document.getElementById("yesBtn");
+    const alwaysBtn = document.getElementById("alwaysBtn");
+    const response = document.getElementById("response");
+
+    function burstHearts(){
+      const hearts = ["💖","💘","💝","❤️","💍","🌸"];
+      for(let i=0;i<16;i++){
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+        c.style.left = Math.random()*100 + "vw";
+        c.style.animationDuration = (2.2 + Math.random()*1.8) + "s";
+        c.style.fontSize = (16 + Math.random()*10) + "px";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(), 4500);
+      }
     }
 
-    document.addEventListener("click",enableSound);
-    document.addEventListener("touchstart",enableSound);
+    yesBtn.addEventListener("click", () => {
+      response.style.display = "block";
+      response.textContent = "You are my forever, Paddu 💖";
+      burstHearts();
+    });
+
+    alwaysBtn.addEventListener("click", () => {
+      response.style.display = "block";
+      response.textContent = "Always & forever… us 💍❤️";
+      burstHearts();
+    });
   </script>
 
 </body>
