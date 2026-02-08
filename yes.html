@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Paddu ❤️</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      background: linear-gradient(
+        180deg,
+        #ffe6ec 0%,
+        #ffd1dc 40%,
+        #ffc1d3 100%
+      );
+      color:#6b0035;
+      text-align:center;
+      overflow:hidden;
+    }
+
+    .box{
+      width:min(560px, 92vw);
+      background: rgba(255,255,255,0.9);
+      border:1px solid rgba(255,182,193,0.6);
+      border-radius:22px;
+      padding:36px 26px;
+      box-shadow: 0 20px 50px rgba(255,105,135,0.35);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1{
+      margin:12px 0;
+      font-size:36px;
+      color:#d40055;
+    }
+
+    p{
+      margin:10px 0 0;
+      font-size:18px;
+      color:#7a003b;
+    }
+
+    /* 🌹 Center rose */
+    .center-rose{
+      width:120px;
+      margin-bottom:8px;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25));
+    }
+
+    /* Falling items */
+    .fall{
+      position:absolute;
+      top:-160px;
+      pointer-events:none;
+      animation-name: fallDown;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      will-change: transform;
+      user-select:none;
+    }
+
+    .petal{ opacity:0.85; z-index:1; }
+    .flower{ z-index:1; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
+
+    @keyframes fallDown{
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      100% { transform: translateY(120vh) rotate(360deg); opacity: 1; }
+    }
+
+    /* Hint text */
+    .hint{
+      position:fixed;
+      bottom:14px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:13px;
+      opacity:.75;
+      z-index:5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop autoplay muted preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="box">
+    <img src="rose3.png" class="center-rose" alt="Rose">
+
+    <h1>YAYYY!!</h1>
+
+    <p style="font-size:22px; font-weight:600;">
+      <span style="color:#d40055;">Paddu</span>,
+      you just made my day 😭❤️
+    </p>
+
+    <p>
+      Happy Rose Day & Valentine’s 💐
+    </p>
+
+    <p style="margin-top:14px; font-size:16px; opacity:0.9;">
+      — with love,
+      <span style="color:#d40055; font-weight:600;">Sangar</span>
+    </p>
+  </div>
+
+  <div class="hint" id="hint">Tap once for music 🎵</div>
+
+  <script>
+    const PETAL_IMG  = "rose1.png";
+    const FLOWER_IMG = "rose2.png";
+
+    // 🌸 Petals (small & less)
+    function spawnPetal(){
+      const p = document.createElement("img");
+      p.src = PETAL_IMG;
+      p.className = "fall petal";
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.width = (12 + Math.random() * 10) + "px";
+      p.style.animationDuration = (4 + Math.random() * 3) + "s";
+      p.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(), 8000);
+    }
+
+    // 🌹 Roses (big & more)
+    function spawnFlower(){
+      const f = document.createElement("img");
+      f.src = FLOWER_IMG;
+      f.className = "fall flower";
+      f.style.left = Math.random() * 100 + "vw";
+      f.style.width = (120 + Math.random() * 40) + "px";
+      f.style.animationDuration = (6 + Math.random() * 4) + "s";
+      f.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(), 13000);
+    }
+
+    setInterval(spawnPetal, 300);
+    setInterval(() => { spawnFlower(); spawnFlower(); }, 650);
+
+    // 🎵 AUTO MUSIC LOGIC (MAX POSSIBLE)
+    const music = document.getElementById("bgMusic");
+    const hint  = document.getElementById("hint");
+
+    // Ensure autoplay (muted)
+    music.volume = 0;
+    music.muted = true;
+    music.play().catch(()=>{});
+
+    // Unmute + fade in on first interaction
+    function enableSound(){
+      music.muted = false;
+      let v = 0;
+      const fade = setInterval(()=>{
+        v += 0.05;
+        music.volume = Math.min(v, 0.6);
+        if(v >= 0.6) clearInterval(fade);
+      }, 120);
+
+      if(hint) hint.style.display = "none";
+      document.removeEventListener("click", enableSound);
+      document.removeEventListener("touchstart", enableSound);
+    }
+
+    document.addEventListener("click", enableSound);
+    document.addEventListener("touchstart", enableSound);
+  </script>
+
+</body>
+</html>

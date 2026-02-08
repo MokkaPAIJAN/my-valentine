@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rose Day 💐</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+
+      /* 🌿 Mint + Blush romantic background */
+      background: linear-gradient(
+        180deg,
+        #e6fffa 0%,
+        #fce7f3 100%
+      );
+
+      color:#4a2b3a;
+    }
+
+    .card{
+      width:min(520px, 92vw);
+      background: rgba(255,255,255,0.92);
+      border:1px solid rgba(236,72,153,0.25);
+      border-radius:22px;
+      padding:34px 26px;
+      text-align:center;
+      box-shadow: 0 20px 50px rgba(236,72,153,0.25);
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:36px;
+      color:#be185d;
+    }
+
+    .emoji{
+      font-size:64px;
+      margin: 6px 0 14px;
+    }
+
+    .question{
+      font-size:20px;
+      margin: 10px 0 24px;
+      color:#6b214a;
+      font-weight:600;
+    }
+
+    .btnrow{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:none;
+      cursor:pointer;
+      padding:14px 30px;
+      border-radius:16px;
+      font-size:22px;
+      font-weight:700;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    button:active{
+      transform: scale(0.97);
+    }
+
+    #yesBtn{
+      background:#ec4899;
+      color:#fff;
+      box-shadow:0 10px 25px rgba(236,72,153,0.4);
+    }
+
+    #noBtn{
+      background:#f8fafc;
+      color:#4a2b3a;
+      border:1px solid rgba(236,72,153,0.3);
+    }
+
+    .note{
+      margin-top:18px;
+      font-size:13px;
+      opacity:.75;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Be My Valentine</h1>
+    <div class="emoji">🌹</div>
+
+    <div class="question">
+      Will you be my Valentine, Paddu?
+    </div>
+
+    <div class="btnrow">
+      <button id="yesBtn" type="button">Yes 💖</button>
+      <button id="noBtn" type="button">No 😅</button>
+    </div>
+
+    <div class="note">
+      Made with love 💐
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn  = document.getElementById("noBtn");
+
+    const messages = [
+      "Pleaseee 🥺",
+      "Paddu please… 💗",
+      "One more chance? 😭",
+      "Don’t break my heart 💔",
+      "Okay last time… 😳",
+      "Still no? 😅"
+    ];
+
+    let msgIndex = 0;
+    let yesScale = 1;
+
+    noBtn.addEventListener("click", () => {
+      noBtn.textContent = messages[msgIndex];
+      msgIndex = (msgIndex + 1) % messages.length;
+
+      yesScale = Math.min(yesScale + 0.18, 2.2);
+      yesBtn.style.transform = `scale(${yesScale})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      window.location.href = "./yes.html";
+    });
+  </script>
+</body>
+</html>
