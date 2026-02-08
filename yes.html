@@ -13,50 +13,63 @@
       align-items:center;
       justify-content:center;
       min-height:100vh;
-      background: linear-gradient(
-        180deg,
-        #ffe6ec 0%,
-        #ffd1dc 40%,
-        #ffc1d3 100%
-      );
+      background: linear-gradient(180deg,#ffe6ec 0%,#ffd1dc 40%,#ffc1d3 100%);
       color:#6b0035;
       text-align:center;
       overflow:hidden;
     }
 
-    /* ✅ SMALLER CENTER BOX */
+    /* ✅ MUCH SMALLER BOX */
     .box{
-      width: min(420px, 88vw);   /* smaller than before */
-      max-height: 78vh;          /* prevents full-screen cover */
-      background: rgba(255,255,255,0.9);
-      border:1px solid rgba(255,182,193,0.6);
-      border-radius:22px;
-      padding:24px 20px;         /* reduced padding */
-      box-shadow: 0 16px 40px rgba(255,105,135,0.35);
+      width: min(360px, 82vw);     /* smaller width */
+      max-height: 62vh;            /* never full screen */
+      background: rgba(255,255,255,0.92);
+      border:1px solid rgba(255,182,193,0.55);
+      border-radius:18px;
+      padding:16px 14px;           /* smaller padding */
+      box-shadow: 0 12px 30px rgba(255,105,135,0.28);
       position: relative;
       z-index: 2;
     }
 
-    h1{
-      margin:10px 0;
-      font-size:32px;            /* slightly smaller */
-      color:#d40055;
+    /* ✅ Smaller center image */
+    .center-rose{
+      width:72px;
+      margin-bottom:6px;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.20));
     }
 
-    p{
-      margin:8px 0 0;
+    /* ✅ Smaller text */
+    h1{
+      margin:6px 0 8px;
+      font-size:26px;
+      color:#d40055;
+      letter-spacing:0.5px;
+    }
+
+    .line1{
+      margin:6px 0 0;
       font-size:17px;
+      font-weight:700;
+      color:#7a003b;
+      line-height:1.25;
+    }
+
+    .line2{
+      margin:10px 0 0;
+      font-size:15px;
+      color:#7a003b;
+      line-height:1.25;
+    }
+
+    .sign{
+      margin-top:10px;
+      font-size:13px;
+      opacity:0.9;
       color:#7a003b;
     }
 
-    /* 🌹 Center rose */
-    .center-rose{
-      width:95px;                /* smaller image */
-      margin-bottom:6px;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
-    }
-
-    /* Falling items */
+    /* Falling */
     .fall{
       position:absolute;
       top:-160px;
@@ -77,10 +90,10 @@
       100% { transform: translateY(120vh) rotate(360deg); opacity: 1; }
     }
 
-    /* Mobile hint */
+    /* Hint */
     .hint{
       position:fixed;
-      bottom:12px;
+      bottom:10px;
       left:50%;
       transform:translateX(-50%);
       font-size:12px;
@@ -88,10 +101,24 @@
       z-index:5;
     }
 
-    /* Extra mobile polish */
-    @media (max-height: 700px){
+    /* ✅ EXTRA shrink for small iPhone screens */
+    @media (max-width: 390px){
       .box{
-        transform: scale(0.95);
+        width: 80vw;
+        padding:14px 12px;
+        max-height: 58vh;
+      }
+      .center-rose{ width:64px; }
+      h1{ font-size:24px; }
+      .line1{ font-size:16px; }
+      .line2{ font-size:14px; }
+      .sign{ font-size:12px; }
+    }
+
+    /* ✅ If phone height is small, shrink more */
+    @media (max-height: 720px){
+      .box{
+        transform: scale(0.92);
       }
     }
   </style>
@@ -99,7 +126,7 @@
 
 <body>
 
-  <!-- 🎵 Background music -->
+  <!-- 🎵 music -->
   <audio id="bgMusic" loop autoplay muted preload="auto">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
@@ -109,19 +136,17 @@
 
     <h1>YAYYY!!</h1>
 
-    <p style="font-size:20px; font-weight:600;">
-      <span style="color:#d40055;">Paddu</span>,
-      you just made my day 😭❤️
-    </p>
+    <div class="line1">
+      <span style="color:#d40055;">Paddu</span>, you just made my day 😭❤️
+    </div>
 
-    <p>
+    <div class="line2">
       Happy Rose Day & Valentine’s 💐
-    </p>
+    </div>
 
-    <p style="margin-top:12px; font-size:15px; opacity:0.9;">
-      — with love,
-      <span style="color:#d40055; font-weight:600;">Sangar</span>
-    </p>
+    <div class="sign">
+      — with love, <span style="color:#d40055; font-weight:700;">Sangar</span>
+    </div>
   </div>
 
   <div class="hint" id="hint">Tap once for music 🎵</div>
@@ -130,32 +155,34 @@
     const PETAL_IMG  = "rose1.png";
     const FLOWER_IMG = "rose2.png";
 
+    // Petals smaller & less
     function spawnPetal(){
       const p = document.createElement("img");
       p.src = PETAL_IMG;
       p.className = "fall petal";
       p.style.left = Math.random() * 100 + "vw";
-      p.style.width = (12 + Math.random() * 8) + "px";
+      p.style.width = (10 + Math.random() * 7) + "px";
       p.style.animationDuration = (4 + Math.random() * 3) + "s";
       document.body.appendChild(p);
       setTimeout(()=>p.remove(), 8000);
     }
 
+    // Roses
     function spawnFlower(){
       const f = document.createElement("img");
       f.src = FLOWER_IMG;
       f.className = "fall flower";
       f.style.left = Math.random() * 100 + "vw";
-      f.style.width = (100 + Math.random() * 35) + "px";
+      f.style.width = (95 + Math.random() * 30) + "px";
       f.style.animationDuration = (6 + Math.random() * 4) + "s";
       document.body.appendChild(f);
       setTimeout(()=>f.remove(), 13000);
     }
 
-    setInterval(spawnPetal, 320);
-    setInterval(() => { spawnFlower(); spawnFlower(); }, 700);
+    setInterval(spawnPetal, 340);
+    setInterval(() => { spawnFlower(); spawnFlower(); }, 750);
 
-    /* 🎵 Auto music (best allowed) */
+    // Music (best allowed)
     const music = document.getElementById("bgMusic");
     const hint  = document.getElementById("hint");
 
@@ -171,7 +198,8 @@
         music.volume = Math.min(v, 0.6);
         if(v >= 0.6) clearInterval(fade);
       }, 120);
-      hint.style.display = "none";
+
+      if(hint) hint.style.display = "none";
       document.removeEventListener("click", enableSound);
       document.removeEventListener("touchstart", enableSound);
     }
