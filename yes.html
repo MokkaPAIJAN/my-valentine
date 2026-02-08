@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -24,34 +24,36 @@
       overflow:hidden;
     }
 
+    /* ✅ SMALLER CENTER BOX */
     .box{
-      width:min(560px, 92vw);
+      width: min(420px, 88vw);   /* smaller than before */
+      max-height: 78vh;          /* prevents full-screen cover */
       background: rgba(255,255,255,0.9);
       border:1px solid rgba(255,182,193,0.6);
       border-radius:22px;
-      padding:36px 26px;
-      box-shadow: 0 20px 50px rgba(255,105,135,0.35);
+      padding:24px 20px;         /* reduced padding */
+      box-shadow: 0 16px 40px rgba(255,105,135,0.35);
       position: relative;
       z-index: 2;
     }
 
     h1{
-      margin:12px 0;
-      font-size:36px;
+      margin:10px 0;
+      font-size:32px;            /* slightly smaller */
       color:#d40055;
     }
 
     p{
-      margin:10px 0 0;
-      font-size:18px;
+      margin:8px 0 0;
+      font-size:17px;
       color:#7a003b;
     }
 
     /* 🌹 Center rose */
     .center-rose{
-      width:120px;
-      margin-bottom:8px;
-      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25));
+      width:95px;                /* smaller image */
+      margin-bottom:6px;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
     }
 
     /* Falling items */
@@ -75,22 +77,29 @@
       100% { transform: translateY(120vh) rotate(360deg); opacity: 1; }
     }
 
-    /* Hint text */
+    /* Mobile hint */
     .hint{
       position:fixed;
-      bottom:14px;
+      bottom:12px;
       left:50%;
       transform:translateX(-50%);
-      font-size:13px;
-      opacity:.75;
+      font-size:12px;
+      opacity:.7;
       z-index:5;
+    }
+
+    /* Extra mobile polish */
+    @media (max-height: 700px){
+      .box{
+        transform: scale(0.95);
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🎵 BACKGROUND MUSIC -->
+  <!-- 🎵 Background music -->
   <audio id="bgMusic" loop autoplay muted preload="auto">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
@@ -100,7 +109,7 @@
 
     <h1>YAYYY!!</h1>
 
-    <p style="font-size:22px; font-weight:600;">
+    <p style="font-size:20px; font-weight:600;">
       <span style="color:#d40055;">Paddu</span>,
       you just made my day 😭❤️
     </p>
@@ -109,7 +118,7 @@
       Happy Rose Day & Valentine’s 💐
     </p>
 
-    <p style="margin-top:14px; font-size:16px; opacity:0.9;">
+    <p style="margin-top:12px; font-size:15px; opacity:0.9;">
       — with love,
       <span style="color:#d40055; font-weight:600;">Sangar</span>
     </p>
@@ -121,45 +130,39 @@
     const PETAL_IMG  = "rose1.png";
     const FLOWER_IMG = "rose2.png";
 
-    // 🌸 Petals (small & less)
     function spawnPetal(){
       const p = document.createElement("img");
       p.src = PETAL_IMG;
       p.className = "fall petal";
       p.style.left = Math.random() * 100 + "vw";
-      p.style.width = (12 + Math.random() * 10) + "px";
+      p.style.width = (12 + Math.random() * 8) + "px";
       p.style.animationDuration = (4 + Math.random() * 3) + "s";
-      p.style.transform = `rotate(${Math.random() * 360}deg)`;
       document.body.appendChild(p);
       setTimeout(()=>p.remove(), 8000);
     }
 
-    // 🌹 Roses (big & more)
     function spawnFlower(){
       const f = document.createElement("img");
       f.src = FLOWER_IMG;
       f.className = "fall flower";
       f.style.left = Math.random() * 100 + "vw";
-      f.style.width = (120 + Math.random() * 40) + "px";
+      f.style.width = (100 + Math.random() * 35) + "px";
       f.style.animationDuration = (6 + Math.random() * 4) + "s";
-      f.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
       document.body.appendChild(f);
       setTimeout(()=>f.remove(), 13000);
     }
 
-    setInterval(spawnPetal, 300);
-    setInterval(() => { spawnFlower(); spawnFlower(); }, 650);
+    setInterval(spawnPetal, 320);
+    setInterval(() => { spawnFlower(); spawnFlower(); }, 700);
 
-    // 🎵 AUTO MUSIC LOGIC (MAX POSSIBLE)
+    /* 🎵 Auto music (best allowed) */
     const music = document.getElementById("bgMusic");
     const hint  = document.getElementById("hint");
 
-    // Ensure autoplay (muted)
     music.volume = 0;
     music.muted = true;
     music.play().catch(()=>{});
 
-    // Unmute + fade in on first interaction
     function enableSound(){
       music.muted = false;
       let v = 0;
@@ -168,8 +171,7 @@
         music.volume = Math.min(v, 0.6);
         if(v >= 0.6) clearInterval(fade);
       }, 120);
-
-      if(hint) hint.style.display = "none";
+      hint.style.display = "none";
       document.removeEventListener("click", enableSound);
       document.removeEventListener("touchstart", enableSound);
     }
