@@ -19,78 +19,84 @@
       overflow:hidden;
     }
 
-    /* ✅ MUCH SMALLER BOX */
+    /* SMALL CENTER BOX */
     .box{
-      width: min(360px, 82vw);     /* smaller width */
-      max-height: 62vh;            /* never full screen */
+      width: min(360px, 82vw);
+      max-height: 65vh;
       background: rgba(255,255,255,0.92);
       border:1px solid rgba(255,182,193,0.55);
       border-radius:18px;
-      padding:16px 14px;           /* smaller padding */
+      padding:16px 14px;
       box-shadow: 0 12px 30px rgba(255,105,135,0.28);
       position: relative;
       z-index: 2;
     }
 
-    /* ✅ Smaller center image */
     .center-rose{
-      width:72px;
+      width:70px;
       margin-bottom:6px;
       filter: drop-shadow(0 6px 10px rgba(0,0,0,0.20));
     }
 
-    /* ✅ Smaller text */
     h1{
-      margin:6px 0 8px;
+      margin:6px 0;
       font-size:26px;
+      color:#d40055;
+    }
+
+    .line1{
+      font-size:17px;
+      font-weight:700;
+      margin-top:4px;
+    }
+
+    .line2{
+      font-size:14px;
+      margin-top:8px;
+    }
+
+    /* COUNTDOWN */
+    .countdown-title{
+      margin-top:10px;
+      font-size:13px;
+      opacity:0.8;
+    }
+
+    .countdown{
+      margin-top:4px;
+      font-size:14px;
+      font-weight:700;
       color:#d40055;
       letter-spacing:0.5px;
     }
 
-    .line1{
-      margin:6px 0 0;
-      font-size:17px;
-      font-weight:700;
-      color:#7a003b;
-      line-height:1.25;
-    }
-
-    .line2{
-      margin:10px 0 0;
-      font-size:15px;
-      color:#7a003b;
-      line-height:1.25;
-    }
-
     .sign{
       margin-top:10px;
-      font-size:13px;
+      font-size:12px;
       opacity:0.9;
-      color:#7a003b;
     }
 
-    /* Falling */
+    /* Falling roses */
     .fall{
       position:absolute;
       top:-160px;
       pointer-events:none;
-      animation-name: fallDown;
-      animation-timing-function: linear;
-      animation-iteration-count: 1;
-      will-change: transform;
-      user-select:none;
+      animation: fallDown linear 1;
     }
 
-    .petal{ opacity:0.85; z-index:1; }
-    .flower{ z-index:1; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
+    .petal{ opacity:0.85; }
+    .flower{ filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
 
     @keyframes fallDown{
-      0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
-      10%  { opacity: 1; }
-      100% { transform: translateY(120vh) rotate(360deg); opacity: 1; }
+      0%   { transform: translateY(0) rotate(0deg); opacity:0; }
+      10%  { opacity:1; }
+      100% { transform: translateY(120vh) rotate(360deg); }
     }
 
-    /* Hint */
+    @media (max-width: 390px){
+      .box{ transform: scale(0.92); }
+    }
+
     .hint{
       position:fixed;
       bottom:10px;
@@ -98,35 +104,13 @@
       transform:translateX(-50%);
       font-size:12px;
       opacity:.7;
-      z-index:5;
-    }
-
-    /* ✅ EXTRA shrink for small iPhone screens */
-    @media (max-width: 390px){
-      .box{
-        width: 80vw;
-        padding:14px 12px;
-        max-height: 58vh;
-      }
-      .center-rose{ width:64px; }
-      h1{ font-size:24px; }
-      .line1{ font-size:16px; }
-      .line2{ font-size:14px; }
-      .sign{ font-size:12px; }
-    }
-
-    /* ✅ If phone height is small, shrink more */
-    @media (max-height: 720px){
-      .box{
-        transform: scale(0.92);
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🎵 music -->
+  <!-- 🎵 Music -->
   <audio id="bgMusic" loop autoplay muted preload="auto">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
@@ -141,71 +125,95 @@
     </div>
 
     <div class="line2">
-      Happy Rose Day & Valentine’s 💐
+      Valentine’s Day is coming 💐
     </div>
 
+    <!-- COUNTDOWN -->
+    <div class="countdown-title">Valentine’s Day in</div>
+    <div class="countdown" id="countdown">Loading…</div>
+
     <div class="sign">
-      — with love, <span style="color:#d40055; font-weight:700;">Sangar</span>
+      — with love, <span style="color:#d40055;font-weight:700;">Sangar</span>
     </div>
   </div>
 
   <div class="hint" id="hint">Tap once for music 🎵</div>
 
   <script>
-    const PETAL_IMG  = "rose1.png";
-    const FLOWER_IMG = "rose2.png";
+    /* 🎯 COUNTDOWN TO FEB 14 */
+    const countdownEl = document.getElementById("countdown");
 
-    // Petals smaller & less
+    function updateCountdown(){
+      const now = new Date();
+      const year = now.getFullYear();
+      const valentines = new Date(year, 1, 14, 0, 0, 0); // Feb = 1
+
+      if(now > valentines){
+        valentines.setFullYear(year + 1);
+      }
+
+      const diff = valentines - now;
+
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff / (1000*60*60)) % 24);
+      const m = Math.floor((diff / (1000*60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML =
+        `${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* 🌹 Falling roses */
     function spawnPetal(){
       const p = document.createElement("img");
-      p.src = PETAL_IMG;
+      p.src = "rose1.png";
       p.className = "fall petal";
-      p.style.left = Math.random() * 100 + "vw";
-      p.style.width = (10 + Math.random() * 7) + "px";
-      p.style.animationDuration = (4 + Math.random() * 3) + "s";
+      p.style.left = Math.random()*100+"vw";
+      p.style.width = (10+Math.random()*6)+"px";
+      p.style.animationDuration = (4+Math.random()*3)+"s";
       document.body.appendChild(p);
-      setTimeout(()=>p.remove(), 8000);
+      setTimeout(()=>p.remove(),8000);
     }
 
-    // Roses
     function spawnFlower(){
       const f = document.createElement("img");
-      f.src = FLOWER_IMG;
+      f.src = "rose2.png";
       f.className = "fall flower";
-      f.style.left = Math.random() * 100 + "vw";
-      f.style.width = (95 + Math.random() * 30) + "px";
-      f.style.animationDuration = (6 + Math.random() * 4) + "s";
+      f.style.left = Math.random()*100+"vw";
+      f.style.width = (90+Math.random()*30)+"px";
+      f.style.animationDuration = (6+Math.random()*4)+"s";
       document.body.appendChild(f);
-      setTimeout(()=>f.remove(), 13000);
+      setTimeout(()=>f.remove(),13000);
     }
 
-    setInterval(spawnPetal, 340);
-    setInterval(() => { spawnFlower(); spawnFlower(); }, 750);
+    setInterval(spawnPetal, 350);
+    setInterval(()=>{spawnFlower();spawnFlower();},800);
 
-    // Music (best allowed)
+    /* 🎵 Music enable */
     const music = document.getElementById("bgMusic");
     const hint  = document.getElementById("hint");
 
-    music.volume = 0;
     music.muted = true;
     music.play().catch(()=>{});
 
     function enableSound(){
       music.muted = false;
-      let v = 0;
-      const fade = setInterval(()=>{
-        v += 0.05;
-        music.volume = Math.min(v, 0.6);
-        if(v >= 0.6) clearInterval(fade);
-      }, 120);
-
-      if(hint) hint.style.display = "none";
-      document.removeEventListener("click", enableSound);
-      document.removeEventListener("touchstart", enableSound);
+      let v=0;
+      const fade=setInterval(()=>{
+        v+=0.05;
+        music.volume=Math.min(v,0.6);
+        if(v>=0.6) clearInterval(fade);
+      },120);
+      hint.style.display="none";
+      document.removeEventListener("click",enableSound);
+      document.removeEventListener("touchstart",enableSound);
     }
 
-    document.addEventListener("click", enableSound);
-    document.addEventListener("touchstart", enableSound);
+    document.addEventListener("click",enableSound);
+    document.addEventListener("touchstart",enableSound);
   </script>
 
 </body>
