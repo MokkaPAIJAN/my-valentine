@@ -12,15 +12,13 @@
   --text:#6b0035;
 }
 
+/* ✅ PAGE CAN SCROLL NOW */
 body{
   margin:0;
   font-family: Arial, sans-serif;
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   background: linear-gradient(180deg,#ffe6ec,#ffd1dc,#ffc1d3);
-  overflow:hidden;
+  overflow-y:auto;
   text-align:center;
   color:var(--text);
 }
@@ -28,105 +26,113 @@ body{
 /* 🔝 Valentine countdown */
 .topCountdown{
   position:fixed;
-  top:12px;
+  top:10px;
   left:50%;
   transform:translateX(-50%);
   background:white;
-  padding:8px 16px;
+  padding:6px 12px;
   border-radius:999px;
-  font-size:12px;
+  font-size:11px;
   font-weight:900;
   color:var(--pink);
-  box-shadow:0 8px 20px rgba(255,47,120,.25);
+  box-shadow:0 6px 16px rgba(255,47,120,.25);
   z-index:10;
 }
 
-/* Main card */
+/* 📦 Center card */
 .card{
-  width:min(420px,90vw);
+  width:min(360px,88vw);
   background:rgba(255,255,255,.96);
-  border-radius:22px;
-  padding:18px;
-  box-shadow:0 18px 45px rgba(255,47,120,.25);
-  z-index:5;
-  margin-top:70px;
+  border-radius:20px;
+  padding:14px;
+  box-shadow:0 14px 32px rgba(255,47,120,.22);
+  margin:80px auto 40px;
 }
 
+/* Top rose */
 .topImg{
-  width:78px;
+  width:64px;
   margin-top:4px;
 }
 
+/* Headings */
 h1{
   color:var(--pink);
-  margin:10px 0 6px;
+  margin:8px 0 6px;
+  font-size:22px;
 }
 
 .line1{
-  font-size:18px;
+  font-size:15px;
   font-weight:900;
 }
 
 .sub{
-  font-size:13px;
+  font-size:12px;
   opacity:.9;
 }
 
+/* Info box */
 .infoBox{
-  margin:12px auto;
-  padding:10px;
+  margin:8px auto;
+  padding:8px;
   background:#ffeaf1;
-  border-radius:14px;
-  font-size:12px;
+  border-radius:12px;
+  font-size:11px;
 }
 
+/* Counters */
 .sectionTitle{
-  font-size:12px;
-  opacity:.8;
+  font-size:11px;
+  opacity:.75;
 }
 
 .bigCounter{
-  font-size:16px;
+  font-size:14px;
   font-weight:900;
   color:var(--pink);
 }
 
 /* Buttons */
 .mainBtn{
-  margin:12px auto;
+  margin:10px auto;
   background:linear-gradient(90deg,var(--pink),var(--pink2));
   color:white;
   border:none;
-  padding:12px 22px;
+  padding:10px 18px;
   border-radius:999px;
   font-weight:900;
+  font-size:13px;
   cursor:pointer;
 }
 
 .memoryBtn{
-  display:none; /* 👈 hidden initially */
-  margin:10px auto 6px;
+  display:none;
+  margin:8px auto;
   background:white;
   color:var(--pink);
   border:2px solid #ffb3cc;
-  padding:10px 20px;
+  padding:8px 16px;
   border-radius:999px;
   font-weight:900;
+  font-size:12px;
   cursor:pointer;
-  box-shadow:0 8px 18px rgba(255,47,120,.2);
 }
 
+/* 💌 MESSAGE (FULL VERSION) */
 .message{
   display:none;
   background:white;
-  border-radius:16px;
-  padding:14px;
-  margin-top:12px;
+  border-radius:14px;
+  padding:12px;
+  margin-top:10px;
   text-align:left;
 }
 
 .message p{
-  font-size:13px;
+  font-size:12px;
+  margin-bottom:8px;
+  line-height:1.4;
 }
 
 .highlight{
@@ -136,25 +142,28 @@ h1{
 
 .btnRow{
   display:flex;
-  gap:12px;
+  gap:10px;
   justify-content:center;
+  margin-top:8px;
+}
+
+.btnYes,
+.btnAlways{
+  font-size:12px;
+  padding:7px 14px;
+  border-radius:14px;
+  font-weight:900;
 }
 
 .btnYes{
   background:var(--pink);
   color:white;
   border:none;
-  padding:9px 18px;
-  border-radius:16px;
-  font-weight:900;
 }
 
 .btnAlways{
   background:white;
   border:1px solid #ffb3cc;
-  padding:9px 18px;
-  border-radius:16px;
-  font-weight:900;
 }
 
 .response{
@@ -162,46 +171,39 @@ h1{
   text-align:center;
   font-weight:900;
   color:var(--pink);
-  margin-top:10px;
+  margin-top:6px;
+  font-size:12px;
 }
 
 .sign{
-  font-size:12px;
-  margin-top:10px;
+  font-size:11px;
+  margin-top:8px;
 }
 
-/* 🌹 Falling roses */
+/* 🌹 Falling roses (background only) */
 .fall{
   position:fixed;
-  top:-140px;
+  top:-120px;
   pointer-events:none;
   animation: fall linear forwards;
-  z-index:1;
+  z-index:-1;
 }
 
 @keyframes fall{
-  to{ transform:translateY(115vh) rotate(360deg); }
+  to{ transform:translateY(120vh) rotate(360deg); }
 }
 
-.petal{
-  width:12px;
-  opacity:.65;
-}
-
-.flower{
-  width:110px;
-  filter: drop-shadow(0 10px 16px rgba(0,0,0,.3));
-}
+.petal{ width:11px; opacity:.6; }
+.flower{ width:95px; }
 
 /* Music hint */
 .hint{
   position:fixed;
-  bottom:10px;
+  bottom:8px;
   left:50%;
   transform:translateX(-50%);
-  font-size:12px;
+  font-size:11px;
   opacity:.7;
-  z-index:10;
 }
 </style>
 </head>
@@ -220,9 +222,8 @@ h1{
   <img src="rose3.png" class="topImg">
 
   <h1>Happy Propose Day 💍</h1>
-
   <div class="line1">Paddu, you are my best “yes” 💗</div>
-  <div class="sub">Today is not a new proposal… it’s me choosing you again ✨</div>
+  <div class="sub">Not a new proposal… just choosing you again ✨</div>
 
   <div class="infoBox">
     💌 I proposed: <strong>03.08.2024</strong>
@@ -233,12 +234,20 @@ h1{
 
   <button class="mainBtn" id="toggleBtn">I have something to say 💞</button>
 
-  <!-- 💌 Message -->
+  <!-- 💌 FULL MESSAGE -->
   <div class="message" id="message">
     <p><strong>Paddu,</strong></p>
-    <p>I still remember the day I asked you… and the day you said yes.</p>
-    <p><span class="highlight">I choose you again</span> — today, tomorrow, and always.</p>
-    <p>Thank you for being my happiness, my peace, and my person. ❤️</p>
+    <p>
+      I still remember the day I asked you… and the day you said yes.
+      Every time I think about it, my heart feels calm and full.
+    </p>
+    <p>
+      On this Propose Day, I just want to say:
+      <span class="highlight">I choose you again</span> — today, tomorrow, and always.
+    </p>
+    <p>
+      Thank you for being my happiness, my peace, and my person. ❤️
+    </p>
 
     <div class="btnRow">
       <button class="btnYes" id="yesBtn">Yes 💞</button>
@@ -248,7 +257,6 @@ h1{
     <div class="response" id="response"></div>
   </div>
 
-  <!-- 💖 MEMORY BUTTON (appears after YES) -->
   <button class="memoryBtn" id="memoryBtn" onclick="openMemory()">Our Memory ❤️</button>
 
   <div class="sign">— with love, <strong>Sangar</strong></div>
@@ -261,14 +269,12 @@ h1{
 function updateTogether(){
   const start=new Date(2024,7,18,1,0,0);
   const now=new Date();
-  let diff=now-start;
-  if(diff<0)diff=0;
+  const diff=Math.max(0, now-start);
   const d=Math.floor(diff/86400000);
   const h=Math.floor(diff/3600000)%24;
   const m=Math.floor(diff/60000)%60;
   const s=Math.floor(diff/1000)%60;
-  document.getElementById("togetherCounter").textContent=
-    `${d}d ${h}h ${m}m ${s}s`;
+  togetherCounter.textContent=`${d}d ${h}h ${m}m ${s}s`;
 }
 setInterval(updateTogether,1000); updateTogether();
 
@@ -282,32 +288,40 @@ function updateVal(){
   const h=Math.floor(diff/3600000)%24;
   const m=Math.floor(diff/60000)%60;
   const s=Math.floor(diff/1000)%60;
-  document.getElementById("valCounter").textContent=
-    `${d}d ${h}h ${m}m ${s}s`;
+  valCounter.textContent=`${d}d ${h}h ${m}m ${s}s`;
 }
 setInterval(updateVal,1000); updateVal();
 
 /* Toggle message */
 toggleBtn.onclick=()=>{
-  message.style.display = message.style.display==="block"?"none":"block";
-  toggleBtn.textContent = message.style.display==="block"
-    ?"Hide message 🌹":"I have something to say 💞";
+  message.style.display =
+    message.style.display==="block"?"none":"block";
+  toggleBtn.textContent =
+    message.style.display==="block"
+      ?"Hide message 🌹":"I have something to say 💞";
 };
 
-/* YES button → show memory button */
+/* YES */
 yesBtn.onclick=()=>{
   response.style.display="block";
   response.textContent="You are my forever, Paddu 💖";
-  document.getElementById("memoryBtn").style.display="inline-block";
+  memoryBtn.style.display="inline-block";
 };
 
-/* Always button */
+/* ALWAYS */
 alwaysBtn.onclick=()=>{
   response.style.display="block";
   response.textContent="Always & forever… us 💍❤️";
 };
 
-/* 🌸 Petals */
+/* 🎵 Music */
+document.addEventListener("click",()=>{
+  bgMusic.muted=false;
+  bgMusic.volume=.6;
+  bgMusic.play();
+},{once:true});
+
+/* 🌹 Roses */
 setInterval(()=>{
   const p=document.createElement("img");
   p.src="rose1.png";
@@ -316,9 +330,8 @@ setInterval(()=>{
   p.style.animationDuration=(6+Math.random()*3)+"s";
   document.body.appendChild(p);
   setTimeout(()=>p.remove(),9000);
-},700);
+},900);
 
-/* 🌹 Big roses */
 setInterval(()=>{
   const f=document.createElement("img");
   f.src="rose2.png";
@@ -327,17 +340,9 @@ setInterval(()=>{
   f.style.animationDuration=(9+Math.random()*4)+"s";
   document.body.appendChild(f);
   setTimeout(()=>f.remove(),15000);
-},450);
+},700);
 
-/* 🎵 Music autoplay */
-const music=document.getElementById("bgMusic");
-document.addEventListener("click",()=>{
-  music.muted=false;
-  music.volume=.6;
-  music.play();
-},{once:true});
-
-/* 💖 Open memory photo */
+/* 💖 Memory */
 function openMemory(){
   window.open("us.jpg","_blank");
 }
