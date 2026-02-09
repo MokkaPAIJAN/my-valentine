@@ -26,6 +26,23 @@
       text-align:center;
     }
 
+    /* 🔝 TOP VALENTINE COUNTDOWN */
+    .topCountdown{
+      position:fixed;
+      top:14px;
+      left:50%;
+      transform:translateX(-50%);
+      background:rgba(255,255,255,0.9);
+      border:1px solid rgba(255,179,204,0.9);
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:12px;
+      font-weight:900;
+      color:var(--pink);
+      box-shadow:0 10px 22px rgba(255,47,120,0.25);
+      z-index:5;
+    }
+
     .card{
       width:min(420px, 90vw);
       background: rgba(255,255,255,0.96);
@@ -34,6 +51,7 @@
       box-shadow:0 18px 45px rgba(255,47,120,0.22);
       position:relative;
       z-index:2;
+      margin-top:60px;
     }
 
     .topImg{
@@ -60,7 +78,6 @@
       margin-bottom:10px;
     }
 
-    /* Pink info box */
     .infoBox{
       margin:12px auto 10px;
       width:min(360px, 84vw);
@@ -69,7 +86,6 @@
       border-radius:14px;
       padding:10px 12px;
       font-size:12px;
-      line-height:1.35;
     }
     .infoBox strong{ color:var(--pink); }
 
@@ -84,7 +100,6 @@
       font-size:16px;
       font-weight:900;
       color:var(--pink);
-      letter-spacing:.3px;
     }
 
     .mainBtn{
@@ -167,21 +182,6 @@
     }
     .sign strong{ color:var(--pink); }
 
-    /* Falling roses */
-    .fall{
-      position:absolute;
-      top:-160px;
-      pointer-events:none;
-      animation: fallDown linear 1;
-      z-index:1;
-    }
-
-    @keyframes fallDown{
-      0%{ opacity:0; }
-      10%{ opacity:1; }
-      100%{ transform:translateY(120vh) rotate(360deg); }
-    }
-
     .hint{
       position:fixed;
       bottom:10px;
@@ -189,11 +189,17 @@
       transform:translateX(-50%);
       font-size:12px;
       opacity:.75;
+      z-index:5;
     }
   </style>
 </head>
 
 <body>
+
+<!-- 🔝 TOP VALENTINE COUNTDOWN -->
+<div class="topCountdown">
+  Valentine’s Day in <span id="valCounter">Loading…</span>
+</div>
 
 <audio id="bgMusic" loop autoplay muted>
   <source src="music.mp3" type="audio/mpeg">
@@ -207,17 +213,12 @@
   <div class="line1">Paddu, you are my best “yes” 💗</div>
   <div class="sub">Today is not a new proposal… it’s me choosing you again ✨</div>
 
-  <!-- Info box (DATE REMOVED) -->
   <div class="infoBox">
     💌 I proposed: <strong>03.08.2024</strong>
   </div>
 
-  <!-- TOGETHER COUNTDOWN BACK -->
   <div class="sectionTitle">💞 Together for</div>
   <div class="bigCounter" id="togetherCounter">Loading…</div>
-
-  <div class="sectionTitle">Valentine’s Day in</div>
-  <div class="bigCounter" id="valCounter">Loading…</div>
 
   <button class="mainBtn" id="toggleBtn">I have something to say 💞</button>
 
@@ -270,7 +271,7 @@
   updateTogether();
   setInterval(updateTogether,1000);
 
-  /* ❤️ Valentine countdown */
+  /* ❤️ Valentine countdown (TOP) */
   function updateVal(){
     const now = new Date();
     let v = new Date(now.getFullYear(),1,14);
