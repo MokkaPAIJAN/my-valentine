@@ -1,202 +1,203 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Paddu ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Paddu ❤️</title>
 
-  <style>
-    :root{
-      --pink:#ff2f78;
-      --pink2:#ff5a95;
-      --border:#ffb3cc;
-      --text:#6b0035;
-    }
+<style>
+:root{
+  --pink:#ff2f78;
+  --pink2:#ff5a95;
+  --text:#6b0035;
+}
 
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: linear-gradient(180deg,#ffe6ec 0%,#ffd1dc 45%,#ffc1d3 100%);
-      color:var(--text);
-      overflow:hidden;
-      text-align:center;
-    }
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(180deg,#ffe6ec,#ffd1dc,#ffc1d3);
+  overflow:hidden;
+  text-align:center;
+  color:var(--text);
+}
 
-    /* 🔝 TOP VALENTINE COUNTDOWN */
-    .topCountdown{
-      position:fixed;
-      top:14px;
-      left:50%;
-      transform:translateX(-50%);
-      background:rgba(255,255,255,0.9);
-      border:1px solid rgba(255,179,204,0.9);
-      border-radius:999px;
-      padding:8px 14px;
-      font-size:12px;
-      font-weight:900;
-      color:var(--pink);
-      box-shadow:0 10px 22px rgba(255,47,120,0.25);
-      z-index:5;
-    }
+/* 🔝 Valentine countdown */
+.topCountdown{
+  position:fixed;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:white;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--pink);
+  box-shadow:0 8px 20px rgba(255,47,120,.25);
+  z-index:10;
+}
 
-    .card{
-      width:min(420px, 90vw);
-      background: rgba(255,255,255,0.96);
-      border-radius:22px;
-      padding:18px 18px 14px;
-      box-shadow:0 18px 45px rgba(255,47,120,0.22);
-      position:relative;
-      z-index:2;
-      margin-top:60px;
-    }
+/* Card */
+.card{
+  width:min(420px,90vw);
+  background:rgba(255,255,255,.96);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 18px 45px rgba(255,47,120,.25);
+  z-index:5;
+  margin-top:60px;
+}
 
-    .topImg{
-      width:78px;
-      margin-top:4px;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.18));
-    }
+.topImg{
+  width:78px;
+  margin-top:4px;
+}
 
-    h1{
-      margin:10px 0 6px;
-      font-size:28px;
-      color:var(--pink);
-    }
+h1{
+  color:var(--pink);
+  margin:10px 0 6px;
+}
 
-    .line1{
-      font-size:18px;
-      font-weight:900;
-      margin:4px 0;
-    }
+.line1{
+  font-size:18px;
+  font-weight:900;
+}
 
-    .sub{
-      font-size:13px;
-      opacity:.9;
-      margin-bottom:10px;
-    }
+.sub{
+  font-size:13px;
+  opacity:.9;
+}
 
-    .infoBox{
-      margin:12px auto 10px;
-      width:min(360px, 84vw);
-      background: rgba(255, 235, 242, 0.65);
-      border:1px solid rgba(255,179,204,0.9);
-      border-radius:14px;
-      padding:10px 12px;
-      font-size:12px;
-    }
-    .infoBox strong{ color:var(--pink); }
+.infoBox{
+  margin:12px auto;
+  padding:10px;
+  background:#ffeaf1;
+  border-radius:14px;
+  font-size:12px;
+}
 
-    .sectionTitle{
-      margin-top:8px;
-      font-size:12px;
-      opacity:.8;
-    }
+.sectionTitle{
+  font-size:12px;
+  opacity:.8;
+}
 
-    .bigCounter{
-      margin-top:4px;
-      font-size:16px;
-      font-weight:900;
-      color:var(--pink);
-    }
+.bigCounter{
+  font-size:16px;
+  font-weight:900;
+  color:var(--pink);
+}
 
-    .mainBtn{
-      margin:14px auto 8px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background: linear-gradient(90deg,var(--pink),var(--pink2));
-      color:#fff;
-      border:none;
-      padding:12px 22px;
-      font-weight:900;
-      border-radius:999px;
-      cursor:pointer;
-      box-shadow:0 12px 26px rgba(255,47,120,0.28);
-    }
+.mainBtn{
+  margin:14px auto;
+  background:linear-gradient(90deg,var(--pink),var(--pink2));
+  color:white;
+  border:none;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:900;
+  cursor:pointer;
+}
 
-    .message{
-      margin:12px auto 0;
-      width:min(360px, 84vw);
-      background:#fff;
-      border:1px solid rgba(255,179,204,0.9);
-      border-radius:16px;
-      padding:14px;
-      text-align:left;
-      display:none;
-    }
+.message{
+  display:none;
+  background:white;
+  border-radius:16px;
+  padding:14px;
+  margin-top:12px;
+  text-align:left;
+}
 
-    .message p{
-      margin:0 0 10px 0;
-      font-size:13px;
-      line-height:1.45;
-    }
+.message p{
+  font-size:13px;
+}
 
-    .highlight{
-      color:var(--pink);
-      font-weight:900;
-    }
+.highlight{
+  color:var(--pink);
+  font-weight:900;
+}
 
-    .btnRow{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      margin-top:10px;
-    }
+.btnRow{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+}
 
-    .btnYes{
-      background:var(--pink);
-      color:#fff;
-      border:none;
-      border-radius:16px;
-      padding:9px 18px;
-      font-weight:900;
-      cursor:pointer;
-    }
+.btnYes{
+  background:var(--pink);
+  color:white;
+  border:none;
+  padding:9px 18px;
+  border-radius:16px;
+  font-weight:900;
+}
 
-    .btnAlways{
-      background:#fff;
-      color:var(--text);
-      border:1px solid rgba(255,179,204,0.95);
-      border-radius:16px;
-      padding:9px 18px;
-      font-weight:900;
-      cursor:pointer;
-    }
+.btnAlways{
+  background:white;
+  border:1px solid #ffb3cc;
+  padding:9px 18px;
+  border-radius:16px;
+  font-weight:900;
+}
 
-    .response{
-      margin-top:10px;
-      text-align:center;
-      font-weight:900;
-      color:var(--pink);
-      display:none;
-      font-size:13px;
-    }
+.response{
+  display:none;
+  text-align:center;
+  font-weight:900;
+  color:var(--pink);
+  margin-top:10px;
+}
 
-    .sign{
-      margin-top:10px;
-      font-size:12px;
-      opacity:.9;
-    }
-    .sign strong{ color:var(--pink); }
+.sign{
+  font-size:12px;
+  margin-top:10px;
+}
 
-    .hint{
-      position:fixed;
-      bottom:10px;
-      left:50%;
-      transform:translateX(-50%);
-      font-size:12px;
-      opacity:.75;
-      z-index:5;
-    }
-  </style>
+/* 🌹 Falling roses */
+.fall{
+  position:fixed;
+  top:-140px;
+  pointer-events:none;
+  animation: fall linear forwards;
+  z-index:1;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(115vh) rotate(360deg);
+  }
+}
+
+/* rose1 = petals (small & less) */
+.petal{
+  width:12px;
+  opacity:.65;
+}
+
+/* rose2 = flowers (BIGGER & MORE) */
+.flower{
+  width:110px; /* ⬅️ bigger */
+  filter: drop-shadow(0 10px 16px rgba(0,0,0,.3));
+}
+
+/* Music hint */
+.hint{
+  position:fixed;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:12px;
+  opacity:.7;
+  z-index:10;
+}
+</style>
 </head>
 
 <body>
 
-<!-- 🔝 TOP VALENTINE COUNTDOWN -->
 <div class="topCountdown">
   Valentine’s Day in <span id="valCounter">Loading…</span>
 </div>
@@ -206,8 +207,7 @@
 </audio>
 
 <div class="card">
-  <img src="rose3.png" class="topImg" alt="Rose">
-
+  <img src="rose3.png" class="topImg">
   <h1>Happy Propose Day 💍</h1>
 
   <div class="line1">Paddu, you are my best “yes” 💗</div>
@@ -224,20 +224,9 @@
 
   <div class="message" id="message">
     <p><strong>Paddu,</strong></p>
-
-    <p>
-      I still remember the day I asked you… and the day you said yes.
-      Every time I think about it, my heart feels calm and full.
-    </p>
-
-    <p>
-      On this Propose Day, I just want to say:
-      <span class="highlight">I choose you again</span> — today, tomorrow, and always.
-    </p>
-
-    <p>
-      Thank you for being my happiness, my peace, and my person. ❤️
-    </p>
+    <p>I still remember the day I asked you… and the day you said yes.</p>
+    <p><span class="highlight">I choose you again</span> — today, tomorrow, and always.</p>
+    <p>Thank you for being my happiness, my peace, and my person. ❤️</p>
 
     <div class="btnRow">
       <button class="btnYes" id="yesBtn">Yes 💞</button>
@@ -253,69 +242,82 @@
 <div class="hint">Tap once for music 🎵</div>
 
 <script>
-  /* 💞 Together countdown (18-08-2024 @ 01:00 AM) */
-  function updateTogether(){
-    const start = new Date(2024,7,18,1,0,0);
-    const now = new Date();
-    let diff = now - start;
-    if(diff < 0) diff = 0;
+/* 💞 Together counter */
+function updateTogether(){
+  const start=new Date(2024,7,18,1,0,0);
+  const now=new Date();
+  let diff=now-start;
+  if(diff<0)diff=0;
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff/3600000)%24;
+  const m=Math.floor(diff/60000)%60;
+  const s=Math.floor(diff/1000)%60;
+  document.getElementById("togetherCounter").textContent=
+    `${d}d ${h}h ${m}m ${s}s`;
+}
+setInterval(updateTogether,1000); updateTogether();
 
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff / 3600000) % 24);
-    const m = Math.floor((diff / 60000) % 60);
-    const s = Math.floor((diff / 1000) % 60);
+/* ❤️ Valentine countdown */
+function updateVal(){
+  const now=new Date();
+  let v=new Date(now.getFullYear(),1,14);
+  if(now>v) v=new Date(now.getFullYear()+1,1,14);
+  const diff=v-now;
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff/3600000)%24;
+  const m=Math.floor(diff/60000)%60;
+  const s=Math.floor(diff/1000)%60;
+  document.getElementById("valCounter").textContent=
+    `${d}d ${h}h ${m}m ${s}s`;
+}
+setInterval(updateVal,1000); updateVal();
 
-    document.getElementById("togetherCounter").textContent =
-      `${d}d ${h}h ${m}m ${s}s`;
-  }
-  updateTogether();
-  setInterval(updateTogether,1000);
+/* Toggle message */
+toggleBtn.onclick=()=>{
+  message.style.display = message.style.display==="block"?"none":"block";
+  toggleBtn.textContent = message.style.display==="block"
+    ?"Hide message 🌹":"I have something to say 💞";
+};
 
-  /* ❤️ Valentine countdown (TOP) */
-  function updateVal(){
-    const now = new Date();
-    let v = new Date(now.getFullYear(),1,14);
-    if(now > v) v = new Date(now.getFullYear()+1,1,14);
-    const diff = v - now;
+/* Yes / Always */
+yesBtn.onclick=()=>{
+  response.style.display="block";
+  response.textContent="You are my forever, Paddu 💖";
+};
+alwaysBtn.onclick=()=>{
+  response.style.display="block";
+  response.textContent="Always & forever… us 💍❤️";
+};
 
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff / 3600000) % 24);
-    const m = Math.floor((diff / 60000) % 60);
-    const s = Math.floor((diff / 1000) % 60);
+/* 🌸 Falling petals (rose1) — LESS */
+setInterval(()=>{
+  const p=document.createElement("img");
+  p.src="rose1.png";
+  p.className="fall petal";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(6+Math.random()*3)+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),9000);
+},700);
 
-    document.getElementById("valCounter").textContent =
-      `${d}d ${h}h ${m}m ${s}s`;
-  }
-  updateVal();
-  setInterval(updateVal,1000);
+/* 🌹 Falling flowers (rose2) — MORE */
+setInterval(()=>{
+  const f=document.createElement("img");
+  f.src="rose2.png";
+  f.className="fall flower";
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(9+Math.random()*4)+"s";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),15000);
+},450);  /* ⬅️ more frequent */
 
-  /* Toggle message */
-  const toggleBtn=document.getElementById("toggleBtn");
-  const message=document.getElementById("message");
-  toggleBtn.onclick=()=>{
-    const open=message.style.display==="block";
-    message.style.display=open?"none":"block";
-    toggleBtn.textContent=open?"I have something to say 💞":"Hide message 🌹";
-  };
-
-  /* Buttons */
-  const response=document.getElementById("response");
-  document.getElementById("yesBtn").onclick=()=>{
-    response.style.display="block";
-    response.textContent="You are my forever, Paddu 💖";
-  };
-  document.getElementById("alwaysBtn").onclick=()=>{
-    response.style.display="block";
-    response.textContent="Always & forever… us 💍❤️";
-  };
-
-  /* Music autoplay fix */
-  const music=document.getElementById("bgMusic");
-  document.addEventListener("click",()=>{
-    music.muted=false;
-    music.volume=0.6;
-    music.play();
-  },{once:true});
+/* 🎵 Music autoplay */
+const music=document.getElementById("bgMusic");
+document.addEventListener("click",()=>{
+  music.muted=false;
+  music.volume=.6;
+  music.play();
+},{once:true});
 </script>
 
 </body>
