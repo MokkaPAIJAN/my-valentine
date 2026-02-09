@@ -41,7 +41,7 @@ body{
   z-index:10;
 }
 
-/* Card */
+/* Main card */
 .card{
   width:min(420px,90vw);
   background:rgba(255,255,255,.96);
@@ -49,7 +49,7 @@ body{
   padding:18px;
   box-shadow:0 18px 45px rgba(255,47,120,.25);
   z-index:5;
-  margin-top:60px;
+  margin-top:70px;
 }
 
 .topImg{
@@ -91,8 +91,9 @@ h1{
   color:var(--pink);
 }
 
+/* Buttons */
 .mainBtn{
-  margin:14px auto;
+  margin:12px auto;
   background:linear-gradient(90deg,var(--pink),var(--pink2));
   color:white;
   border:none;
@@ -100,6 +101,19 @@ h1{
   border-radius:999px;
   font-weight:900;
   cursor:pointer;
+}
+
+.memoryBtn{
+  display:none; /* 👈 hidden initially */
+  margin:10px auto 6px;
+  background:white;
+  color:var(--pink);
+  border:2px solid #ffb3cc;
+  padding:10px 20px;
+  border-radius:999px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(255,47,120,.2);
 }
 
 .message{
@@ -166,20 +180,16 @@ h1{
 }
 
 @keyframes fall{
-  to{
-    transform:translateY(115vh) rotate(360deg);
-  }
+  to{ transform:translateY(115vh) rotate(360deg); }
 }
 
-/* rose1 = petals (small & less) */
 .petal{
   width:12px;
   opacity:.65;
 }
 
-/* rose2 = flowers (BIGGER & MORE) */
 .flower{
-  width:110px; /* ⬅️ bigger */
+  width:110px;
   filter: drop-shadow(0 10px 16px rgba(0,0,0,.3));
 }
 
@@ -208,6 +218,7 @@ h1{
 
 <div class="card">
   <img src="rose3.png" class="topImg">
+
   <h1>Happy Propose Day 💍</h1>
 
   <div class="line1">Paddu, you are my best “yes” 💗</div>
@@ -222,6 +233,7 @@ h1{
 
   <button class="mainBtn" id="toggleBtn">I have something to say 💞</button>
 
+  <!-- 💌 Message -->
   <div class="message" id="message">
     <p><strong>Paddu,</strong></p>
     <p>I still remember the day I asked you… and the day you said yes.</p>
@@ -235,6 +247,9 @@ h1{
 
     <div class="response" id="response"></div>
   </div>
+
+  <!-- 💖 MEMORY BUTTON (appears after YES) -->
+  <button class="memoryBtn" id="memoryBtn" onclick="openMemory()">Our Memory ❤️</button>
 
   <div class="sign">— with love, <strong>Sangar</strong></div>
 </div>
@@ -279,17 +294,20 @@ toggleBtn.onclick=()=>{
     ?"Hide message 🌹":"I have something to say 💞";
 };
 
-/* Yes / Always */
+/* YES button → show memory button */
 yesBtn.onclick=()=>{
   response.style.display="block";
   response.textContent="You are my forever, Paddu 💖";
+  document.getElementById("memoryBtn").style.display="inline-block";
 };
+
+/* Always button */
 alwaysBtn.onclick=()=>{
   response.style.display="block";
   response.textContent="Always & forever… us 💍❤️";
 };
 
-/* 🌸 Falling petals (rose1) — LESS */
+/* 🌸 Petals */
 setInterval(()=>{
   const p=document.createElement("img");
   p.src="rose1.png";
@@ -300,7 +318,7 @@ setInterval(()=>{
   setTimeout(()=>p.remove(),9000);
 },700);
 
-/* 🌹 Falling flowers (rose2) — MORE */
+/* 🌹 Big roses */
 setInterval(()=>{
   const f=document.createElement("img");
   f.src="rose2.png";
@@ -309,7 +327,7 @@ setInterval(()=>{
   f.style.animationDuration=(9+Math.random()*4)+"s";
   document.body.appendChild(f);
   setTimeout(()=>f.remove(),15000);
-},450);  /* ⬅️ more frequent */
+},450);
 
 /* 🎵 Music autoplay */
 const music=document.getElementById("bgMusic");
@@ -318,6 +336,11 @@ document.addEventListener("click",()=>{
   music.volume=.6;
   music.play();
 },{once:true});
+
+/* 💖 Open memory photo */
+function openMemory(){
+  window.open("us.jpg","_blank");
+}
 </script>
 
 </body>
