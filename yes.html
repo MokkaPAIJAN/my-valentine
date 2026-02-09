@@ -6,375 +6,316 @@
   <title>For Paddu ❤️</title>
 
   <style>
+    :root{
+      --pink:#ff2f78;
+      --pink2:#ff5a95;
+      --border:#ffb3cc;
+      --text:#6b0035;
+    }
+
     body{
       margin:0;
       font-family: Arial, sans-serif;
+      min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height:100vh;
-      background: linear-gradient(180deg,#ffe6ec 0%,#ffd1dc 40%,#ffc1d3 100%);
-      color:#6b0035;
-      text-align:center;
+      background: linear-gradient(180deg,#ffe6ec 0%,#ffd1dc 45%,#ffc1d3 100%);
+      color:var(--text);
       overflow:hidden;
+      text-align:center;
     }
 
-    /* SMALL CENTER BOX */
-    .box{
-      width: min(360px, 82vw);
-      max-height: 72vh;
-      background: rgba(255,255,255,0.92);
-      border:1px solid rgba(255,182,193,0.55);
-      border-radius:18px;
-      padding:16px 14px;
-      box-shadow: 0 12px 30px rgba(255,105,135,0.28);
-      position: relative;
-      z-index: 2;
+    .card{
+      width:min(420px, 90vw);
+      background: rgba(255,255,255,0.96);
+      border-radius:22px;
+      padding:18px 18px 14px;
+      box-shadow:0 18px 45px rgba(255,47,120,0.22);
+      position:relative;
+      z-index:2;
     }
 
-    .center-rose{
-      width:70px;
-      margin-bottom:6px;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.20));
+    .topImg{
+      width:78px;
+      margin-top:4px;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.18));
     }
 
     h1{
-      margin:6px 0 8px;
-      font-size:26px;
-      color:#d40055;
-      letter-spacing:0.5px;
+      margin:10px 0 6px;
+      font-size:28px;
+      color:var(--pink);
     }
 
     .line1{
-      margin:6px 0 0;
-      font-size:17px;
-      font-weight:800;
-      color:#7a003b;
-      line-height:1.25;
-    }
-
-    .line2{
-      margin:8px 0 0;
-      font-size:14px;
-      color:#7a003b;
-      line-height:1.25;
-      opacity:0.95;
-    }
-
-    .timeline{
-      margin-top:10px;
-      font-size:12px;
-      color:#7a003b;
-      opacity:0.9;
-      line-height:1.35;
-      background: rgba(255, 229, 236, 0.6);
-      border: 1px solid rgba(255,182,193,0.45);
-      border-radius: 12px;
-      padding: 8px 10px;
-    }
-
-    /* COUNTDOWN */
-    .countdown-title{
-      margin-top:10px;
-      font-size:12px;
-      opacity:0.75;
-      color:#7a003b;
-    }
-    .countdown{
-      margin-top:4px;
-      font-size:14px;
+      font-size:18px;
       font-weight:900;
-      color:#d40055;
-      letter-spacing:0.5px;
+      margin:4px 0;
     }
 
-    /* Buttons */
-    .btnRow{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    button{
-      border:none;
-      cursor:pointer;
-      padding:10px 14px;
-      border-radius:14px;
-      font-size:14px;
-      font-weight:900;
-      transition: transform .12s ease;
-      user-select:none;
-    }
-    button:active{ transform: scale(0.97); }
-
-    .primary{
-      background:#ff2f78;
-      color:#fff;
-      box-shadow:0 10px 22px rgba(255,47,120,0.30);
-    }
-    .secondary{
-      background:#fff;
-      color:#7a003b;
-      border:1px solid rgba(255,182,193,0.7);
-    }
-
-    /* Reveal letter */
-    .letter{
-      margin-top:10px;
-      text-align:left;
+    .sub{
       font-size:13px;
-      color:#6b0035;
-      line-height:1.45;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,182,193,0.55);
-      border-radius: 14px;
-      padding: 10px 12px;
+      opacity:.9;
+      margin-bottom:10px;
+    }
+
+    /* Pink info box */
+    .infoBox{
+      margin:12px auto 10px;
+      width:min(360px, 84vw);
+      background: rgba(255, 235, 242, 0.65);
+      border:1px solid rgba(255,179,204,0.9);
+      border-radius:14px;
+      padding:10px 12px;
+      font-size:12px;
+      line-height:1.35;
+    }
+    .infoBox strong{ color:var(--pink); }
+
+    .sectionTitle{
+      margin-top:8px;
+      font-size:12px;
+      opacity:.8;
+    }
+
+    .bigCounter{
+      margin-top:4px;
+      font-size:16px;
+      font-weight:900;
+      color:var(--pink);
+      letter-spacing:.3px;
+    }
+
+    .mainBtn{
+      margin:14px auto 8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background: linear-gradient(90deg,var(--pink),var(--pink2));
+      color:#fff;
+      border:none;
+      padding:12px 22px;
+      font-weight:900;
+      border-radius:999px;
+      cursor:pointer;
+      box-shadow:0 12px 26px rgba(255,47,120,0.28);
+    }
+
+    .message{
+      margin:12px auto 0;
+      width:min(360px, 84vw);
+      background:#fff;
+      border:1px solid rgba(255,179,204,0.9);
+      border-radius:16px;
+      padding:14px;
+      text-align:left;
       display:none;
     }
-    .letter strong{ color:#d40055; }
 
-    /* Mini response */
+    .message p{
+      margin:0 0 10px 0;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .highlight{
+      color:var(--pink);
+      font-weight:900;
+    }
+
+    .btnRow{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    .btnYes{
+      background:var(--pink);
+      color:#fff;
+      border:none;
+      border-radius:16px;
+      padding:9px 18px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .btnAlways{
+      background:#fff;
+      color:var(--text);
+      border:1px solid rgba(255,179,204,0.95);
+      border-radius:16px;
+      padding:9px 18px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
     .response{
       margin-top:10px;
-      font-size:13px;
-      font-weight:800;
-      color:#d40055;
+      text-align:center;
+      font-weight:900;
+      color:var(--pink);
       display:none;
+      font-size:13px;
     }
 
     .sign{
       margin-top:10px;
       font-size:12px;
-      opacity:0.9;
-      color:#7a003b;
+      opacity:.9;
     }
+    .sign strong{ color:var(--pink); }
 
-    /* Falling */
+    /* Falling roses */
     .fall{
       position:absolute;
       top:-160px;
       pointer-events:none;
       animation: fallDown linear 1;
-      will-change: transform;
-      user-select:none;
       z-index:1;
     }
-    .petal{ opacity:0.85; }
-    .flower{ filter: drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
 
     @keyframes fallDown{
-      0%   { transform: translateY(0) rotate(0deg); opacity:0; }
-      10%  { opacity:1; }
-      100% { transform: translateY(120vh) rotate(360deg); opacity:1; }
-    }
-
-    /* Confetti hearts */
-    .confetti{
-      position:absolute;
-      top:-20px;
-      font-size:18px;
-      animation: confettiFall linear 1;
-      pointer-events:none;
-      z-index:3;
-    }
-    @keyframes confettiFall{
-      0%{ transform: translateY(0) rotate(0deg); opacity:0; }
+      0%{ opacity:0; }
       10%{ opacity:1; }
-      100%{ transform: translateY(110vh) rotate(360deg); opacity:0.95; }
+      100%{ transform:translateY(120vh) rotate(360deg); }
     }
 
-    /* Hint */
     .hint{
       position:fixed;
       bottom:10px;
       left:50%;
       transform:translateX(-50%);
       font-size:12px;
-      opacity:.7;
-      z-index:5;
-    }
-
-    @media (max-width: 390px){
-      .box{ transform: scale(0.92); }
+      opacity:.75;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🎵 Music -->
-  <audio id="bgMusic" loop autoplay muted preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bgMusic" loop autoplay muted>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="box">
-    <img src="rose3.png" class="center-rose" alt="Rose">
+<div class="card">
+  <img src="rose3.png" class="topImg" alt="Rose">
 
-    <h1>Happy Propose Day 💍</h1>
+  <h1>Happy Propose Day 💍</h1>
 
-    <div class="line1">
-      <span style="color:#d40055;">Paddu</span>, you are my best “yes” ❤️
-    </div>
+  <div class="line1">Paddu, you are my best “yes” 💗</div>
+  <div class="sub">Today is not a new proposal… it’s me choosing you again ✨</div>
 
-    <div class="line2">
-      Today is not a new proposal… it’s me choosing you again ✨
-    </div>
-
-    <div class="timeline">
-      <div>💌 I proposed: <strong>03.08.2024</strong></div>
-      <div>✅ You accepted: <strong>18.08.2024</strong></div>
-    </div>
-
-    <!-- Countdown to Feb 14 -->
-    <div class="countdown-title">Valentine’s Day in</div>
-    <div class="countdown" id="countdown">Loading…</div>
-
-    <!-- Option 1: Reveal message -->
-    <div class="btnRow">
-      <button class="primary" id="revealBtn">I have something to say 💖</button>
-    </div>
-
-    <div class="letter" id="letter">
-      <div><strong>Paddu</strong>,</div>
-      <div style="margin-top:6px;">
-        I still remember the day I asked you… and the day you said yes.
-        Every time I think about it, my heart feels calm and full.
-      </div>
-      <div style="margin-top:6px;">
-        On this Propose Day, I just want to say:
-        <strong>I choose you again</strong> — today, tomorrow, and always.
-      </div>
-      <div style="margin-top:6px;">
-        Thank you for being my happiness, my peace, and my person. ❤️
-      </div>
-
-      <!-- Option 4: Interactive buttons inside letter -->
-      <div class="btnRow" style="margin-top:10px;">
-        <button class="primary" id="yesBtn">Yes 💖</button>
-        <button class="secondary" id="alwaysBtn">Always 💍</button>
-      </div>
-
-      <div class="response" id="response"></div>
-    </div>
-
-    <div class="sign">
-      — with love, <span style="color:#d40055; font-weight:900;">Sangar</span>
-    </div>
+  <!-- Info box (DATE REMOVED) -->
+  <div class="infoBox">
+    💌 I proposed: <strong>03.08.2024</strong>
   </div>
 
-  <div class="hint" id="hint">Tap once for music 🎵</div>
+  <!-- TOGETHER COUNTDOWN BACK -->
+  <div class="sectionTitle">💞 Together for</div>
+  <div class="bigCounter" id="togetherCounter">Loading…</div>
 
-  <script>
-    /* ✅ Countdown to Feb 14 (next upcoming) */
-    const countdownEl = document.getElementById("countdown");
-    function updateCountdown(){
-      const now = new Date();
-      const year = now.getFullYear();
-      let valentines = new Date(year, 1, 14, 0, 0, 0); // Feb = 1
-      if(now > valentines) valentines = new Date(year + 1, 1, 14, 0, 0, 0);
+  <div class="sectionTitle">Valentine’s Day in</div>
+  <div class="bigCounter" id="valCounter">Loading…</div>
 
-      const diff = valentines - now;
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff / (1000*60*60)) % 24);
-      const m = Math.floor((diff / (1000*60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
+  <button class="mainBtn" id="toggleBtn">I have something to say 💞</button>
 
-      countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+  <div class="message" id="message">
+    <p><strong>Paddu,</strong></p>
 
-    /* 🌹 Falling petals + roses */
-    function spawnPetal(){
-      const p = document.createElement("img");
-      p.src = "rose1.png";
-      p.className = "fall petal";
-      p.style.left = Math.random()*100 + "vw";
-      p.style.width = (10 + Math.random()*7) + "px";
-      p.style.animationDuration = (4 + Math.random()*3) + "s";
-      document.body.appendChild(p);
-      setTimeout(()=>p.remove(), 8000);
-    }
+    <p>
+      I still remember the day I asked you… and the day you said yes.
+      Every time I think about it, my heart feels calm and full.
+    </p>
 
-    function spawnFlower(){
-      const f = document.createElement("img");
-      f.src = "rose2.png";
-      f.className = "fall flower";
-      f.style.left = Math.random()*100 + "vw";
-      f.style.width = (95 + Math.random()*30) + "px";
-      f.style.animationDuration = (6 + Math.random()*4) + "s";
-      f.style.transform = `rotate(${Math.random()*40 - 20}deg)`;
-      document.body.appendChild(f);
-      setTimeout(()=>f.remove(), 13000);
-    }
+    <p>
+      On this Propose Day, I just want to say:
+      <span class="highlight">I choose you again</span> — today, tomorrow, and always.
+    </p>
 
-    setInterval(spawnPetal, 360);
-    setInterval(()=>{ spawnFlower(); spawnFlower(); }, 820);
+    <p>
+      Thank you for being my happiness, my peace, and my person. ❤️
+    </p>
 
-    /* 🎵 Music (best allowed) */
-    const music = document.getElementById("bgMusic");
-    const hint  = document.getElementById("hint");
-    music.muted = true;
-    music.volume = 0;
-    music.play().catch(()=>{});
+    <div class="btnRow">
+      <button class="btnYes" id="yesBtn">Yes 💞</button>
+      <button class="btnAlways" id="alwaysBtn">Always 💍</button>
+    </div>
 
-    function enableSound(){
-      music.muted = false;
-      let v = 0;
-      const fade = setInterval(()=>{
-        v += 0.05;
-        music.volume = Math.min(v, 0.6);
-        if(v >= 0.6) clearInterval(fade);
-      }, 120);
-      if(hint) hint.style.display = "none";
-      document.removeEventListener("click", enableSound);
-      document.removeEventListener("touchstart", enableSound);
-    }
-    document.addEventListener("click", enableSound);
-    document.addEventListener("touchstart", enableSound);
+    <div class="response" id="response"></div>
+  </div>
 
-    /* 💖 Option 1: Reveal letter */
-    const revealBtn = document.getElementById("revealBtn");
-    const letter = document.getElementById("letter");
-    revealBtn.addEventListener("click", () => {
-      letter.style.display = (letter.style.display === "block") ? "none" : "block";
-      revealBtn.textContent = (letter.style.display === "block")
-        ? "Hide message 🙈"
-        : "I have something to say 💖";
-    });
+  <div class="sign">— with love, <strong>Sangar</strong></div>
+</div>
 
-    /* 💍 Option 4: Yes / Always buttons with celebration */
-    const yesBtn = document.getElementById("yesBtn");
-    const alwaysBtn = document.getElementById("alwaysBtn");
-    const response = document.getElementById("response");
+<div class="hint">Tap once for music 🎵</div>
 
-    function burstHearts(){
-      const hearts = ["💖","💘","💝","❤️","💍","🌸"];
-      for(let i=0;i<16;i++){
-        const c = document.createElement("div");
-        c.className = "confetti";
-        c.textContent = hearts[Math.floor(Math.random()*hearts.length)];
-        c.style.left = Math.random()*100 + "vw";
-        c.style.animationDuration = (2.2 + Math.random()*1.8) + "s";
-        c.style.fontSize = (16 + Math.random()*10) + "px";
-        document.body.appendChild(c);
-        setTimeout(()=>c.remove(), 4500);
-      }
-    }
+<script>
+  /* 💞 Together countdown (18-08-2024 @ 01:00 AM) */
+  function updateTogether(){
+    const start = new Date(2024,7,18,1,0,0);
+    const now = new Date();
+    let diff = now - start;
+    if(diff < 0) diff = 0;
 
-    yesBtn.addEventListener("click", () => {
-      response.style.display = "block";
-      response.textContent = "You are my forever, Paddu 💖";
-      burstHearts();
-    });
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff / 3600000) % 24);
+    const m = Math.floor((diff / 60000) % 60);
+    const s = Math.floor((diff / 1000) % 60);
 
-    alwaysBtn.addEventListener("click", () => {
-      response.style.display = "block";
-      response.textContent = "Always & forever… us 💍❤️";
-      burstHearts();
-    });
-  </script>
+    document.getElementById("togetherCounter").textContent =
+      `${d}d ${h}h ${m}m ${s}s`;
+  }
+  updateTogether();
+  setInterval(updateTogether,1000);
+
+  /* ❤️ Valentine countdown */
+  function updateVal(){
+    const now = new Date();
+    let v = new Date(now.getFullYear(),1,14);
+    if(now > v) v = new Date(now.getFullYear()+1,1,14);
+    const diff = v - now;
+
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff / 3600000) % 24);
+    const m = Math.floor((diff / 60000) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("valCounter").textContent =
+      `${d}d ${h}h ${m}m ${s}s`;
+  }
+  updateVal();
+  setInterval(updateVal,1000);
+
+  /* Toggle message */
+  const toggleBtn=document.getElementById("toggleBtn");
+  const message=document.getElementById("message");
+  toggleBtn.onclick=()=>{
+    const open=message.style.display==="block";
+    message.style.display=open?"none":"block";
+    toggleBtn.textContent=open?"I have something to say 💞":"Hide message 🌹";
+  };
+
+  /* Buttons */
+  const response=document.getElementById("response");
+  document.getElementById("yesBtn").onclick=()=>{
+    response.style.display="block";
+    response.textContent="You are my forever, Paddu 💖";
+  };
+  document.getElementById("alwaysBtn").onclick=()=>{
+    response.style.display="block";
+    response.textContent="Always & forever… us 💍❤️";
+  };
+
+  /* Music autoplay fix */
+  const music=document.getElementById("bgMusic");
+  document.addEventListener("click",()=>{
+    music.muted=false;
+    music.volume=0.6;
+    music.play();
+  },{once:true});
+</script>
 
 </body>
 </html>
